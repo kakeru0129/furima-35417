@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| encrypted_password | string | null: false |
-| email              | string | unique:true |
-| first_name         | string | null: false |
-| last_name          | string | null: false |
-| first_name_kana    | string | null: false |
-| last_name_kana     | string | null: false |
-| birthday           | date   | null: false |
+| Column             | Type   | Options                  |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| encrypted_password | string | null: false              |
+| email              | string | null: false, unique:true |
+| first_name         | string | null: false              |
+| last_name          | string | null: false              |
+| first_name_kana    | string | null: false              |
+| last_name_kana     | string | null: false              |
+| birthday           | date   | null: false              |
 
 ### Association
 
@@ -24,8 +24,11 @@
 | ----------- | ---------- | ------------------------------ |
 | title       | string     | null: false                    |
 | description | text       | null: false                    |
-| details_id  | integer    | null: false                    |
-| delivery_id | integer    | null: false                    |
+| category_id | integer    | null: false                    |
+| status_id   | integer    | null: false                    |
+| burden_id   | integer    | null: false                    |
+| area_id     | integer    | null: false                    |
+| day_id      | integer    | null: false                    |
 | price       | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
 
@@ -53,9 +56,9 @@
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block_number  | string     | null: false                    |
-| building_name | string     | null: false                    |
+| building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| order_id      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
