@@ -123,7 +123,7 @@ RSpec.describe Item, type: :model do
       it 'priceが9999999円を超える場合は保存できないこと' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
       it 'userが紐付いていないと保存できないこと' do
