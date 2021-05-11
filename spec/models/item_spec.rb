@@ -15,7 +15,6 @@ RSpec.describe Item, type: :model do
       it 'imageが空では登録できないこと' do
         @item.image = nil
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
@@ -99,6 +98,18 @@ RSpec.describe Item, type: :model do
 
       it 'priceが半角数字以外では保存できないこと' do
         @item.price = '１０００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英数混合では保存できないこと' do
+        @item.price = '1a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英字では保存できないこと' do
+        @item.price = 'a'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
