@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to :day
 
   with_options presence: true do
+    validates :image
     validates :title
     validates :description
     validates :category_id
@@ -32,5 +33,5 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
 
   validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字で入力してください' }
-  
+
 end
