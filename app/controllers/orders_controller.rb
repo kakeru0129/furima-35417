@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :sold_out_item, only: [:index]
-
+  before_action :sold_out_item
+  before_action :authenticate_user!
   def index
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
