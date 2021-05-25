@@ -13,9 +13,9 @@ class OrderAddress
     validates :item_id
   end
 
-  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :area_id, numericality: { other_than: 1 }
-  validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "is invalid. Number without a hyphen(-)"}
+  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "をハイフンありで入力してください"}
+  validates :area_id, numericality: { other_than: 1, message:"を選択してください" }
+  validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "をハイフンなしで入力してください"}
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
